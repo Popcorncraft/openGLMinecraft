@@ -1,0 +1,18 @@
+{
+    "material-icon-theme.files.customClones": [
+    {
+        "name": "h",
+        "base": "h",
+        "color": "purple-400",
+        "fileNames": ["*.h"]
+    }
+],
+"files.associations": {
+    "stdio.h": "c",
+    "stdlib.h": "c",
+    "glfw3.h": "c",
+    "common.h": "c",
+    "string.h": "c",
+    "stdbool.h": "c"
+}
+}
