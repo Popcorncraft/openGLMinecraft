@@ -43,10 +43,6 @@ void init(){
         window.keyboard[i] = 0;
     }
 
-    window.modelScale = (vec4){1, 1, 1, 1};
-    window.modelRotation = (vec4){0, 0, 0, 0};
-    window.modelTranslation = (vec4){0, 0, 3, 0};
-
     window.cameraPosition = (vec4){0, 0, 0, 0};
     window.cameraRotation = (vec4){0, 0, 0, 0};
 
@@ -64,4 +60,8 @@ void init(){
     glBindAttribLocation(window.shader, 0, "in_Position");
     // Link shader
     glLinkProgram(window.shader);
+
+    window.models = (struct modelStruct*)malloc(sizeof(struct modelStruct));
+
+    registerModel("./models/cube.obj");
 }

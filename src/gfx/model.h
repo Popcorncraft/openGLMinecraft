@@ -15,6 +15,7 @@ struct modelStruct{
     vec4 scale;
 };
 
-//struct modelStruct loadModel(char *path);
+void loadModel(char *path, struct modelStruct *model);
+void registerModel(char *path);
 
 #endif

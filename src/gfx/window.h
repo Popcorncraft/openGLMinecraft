@@ -29,10 +29,6 @@ struct windowStruct{
     unsigned int vbo;
     unsigned int ebo;
 
-    vec4 modelScale;
-    vec4 modelRotation;
-    vec4 modelTranslation;
-
     vec4 cameraRotation;
     vec4 cameraPosition;
 
@@ -42,8 +38,8 @@ struct windowStruct{
     float cursorx;
     float cursory;
 
-    int objectCount;
-    struct modelStruct *objects;
+    int modelCount;
+    struct modelStruct *models;
 };
 #pragma endregion
 

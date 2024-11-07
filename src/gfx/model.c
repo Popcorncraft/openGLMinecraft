@@ -1,15 +1,6 @@
 #include "common.h"
 
-
-
-
-
-/*
-struct modelStruct loadModel(char *path){
-    struct modelStruct model;
-
-    model.iCount = 0;
-    model.vCount = 0;
+void loadModel(char *path, struct modelStruct *model){
 
     FILE *file = fopen(path, "r");
 
@@ -17,43 +8,35 @@ struct modelStruct loadModel(char *path){
     char *token;
 
     if (file != NULL){
-        //while (fgets(line, sizeof(line), file)){
-            //switch (line[0]){
-                //case 'v':
-                    //model.vCount += 3;
-                    //break;
-                //case 'f':
-                    //model.iCount += 3;
-                    //break;
-            //}
-        //}
+        model->iCount = 0;
+        model->vCount = 0;
 
-        //int (*iptr)[model.iCount] = malloc(model.iCount * sizeof(int));
-        //float (*vptr)[model.vCount] = malloc(model.vCount * sizeof(float));
+        model->i = malloc(1);
+        model->v = malloc(1);
 
-        //model.i = iptr;
-        //model.v = vptr;
-        model.iCount = 0;
-        model.vCount = 0;
         while (fgets(line, sizeof(line), file)){
             switch (line[0]){
+
                 case 'v':
-                    model.vCount += 3;
+                    model->vCount += 3;
+                    model->v = realloc(model->v, model->vCount * sizeof(float));
                     token = strtok(line, " ");
                     for (int i = 0; i < 4; i++){
                         if (i != 0){
-                            model.v[model.vCount - 4 + i] = strtof(token, NULL);
+                            model->v[model->vCount - 4 + i] = strtof(token, NULL);
                         }
                         token = strtok(NULL, " ");
                     }
 
                     break;
+
                 case 'f':
-                    model.iCount += 3;
+                    model->iCount += 3;
+                    model->i = realloc(model->i, model->iCount * sizeof(int));
                     token = strtok(line, " ");
                     for (int i = 0; i < 4; i++){
                         if (i != 0){
-                            model.i[model.iCount - 4 + i] = (int)strtol(token, NULL, 10);
+                            model->i[model->iCount - 4 + i] = (int)strtol(token, NULL, 10);
                         }
                         token = strtok(NULL, " ");
                     }
@@ -64,6 +47,12 @@ struct modelStruct loadModel(char *path){
     else {
         fprintf(stderr, "Unable to open file\n");
     }
+}
 
-    return model;
-}*/
+void registerModel(char *path){
+    struct modelStruct *model = (struct modelStruct*)malloc(sizeof(struct modelStruct));
+    loadModel(path, model);
+    window.modelCount++;
+    window.models = realloc(window.models, sizeof(struct modelStruct) * window.modelCount);
+    window.models[window.modelCount - 1] = *model;
+}

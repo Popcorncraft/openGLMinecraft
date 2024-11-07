@@ -1,8 +1,7 @@
 #version 450 core
 
-in vec3 in_Position;
-in vec3 in_Normal;
-in vec3 in_Color;
+layout (location = 0) in vec4 in_Position;
+layout (location = 1) in vec4 in_Color;
 
 uniform mat4 modelScaleMatrix;
 uniform mat4 modelRotationMatrix;
@@ -12,6 +11,8 @@ uniform mat4 cameraRotationMatrix;
 uniform mat4 cameraTranslationMatrix;
 
 uniform mat4 projectionMatrix;
+
+out vec4 vertexColor;
 
 void main(){
     
@@ -30,4 +31,6 @@ void main(){
     else{
         gl_Position = vec4(projected.xyz, 1);
     }
+
+    vertexColor = in_Color;
 }
