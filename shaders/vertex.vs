@@ -1,7 +1,7 @@
 #version 450 core
 
 layout (location = 0) in vec4 in_Position;
-layout (location = 1) in vec4 in_Color;
+//layout (location = 1) in vec4 in_Color;
 
 uniform mat4 modelScaleMatrix;
 uniform mat4 modelRotationMatrix;
@@ -32,5 +32,5 @@ void main(){
         gl_Position = vec4(projected.xyz, 1);
     }
 
-    vertexColor = in_Color;
+    vertexColor = vec4(1, 1, 1, 1);
 }

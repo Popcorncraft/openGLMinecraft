@@ -77,14 +77,14 @@ void update(){
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, window.models[i].iCount * sizeof(int), window.models[i].i, GL_STATIC_DRAW);
 
         // Specify how the Vertex Data is stored
-        glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
         // Enable the Vertex Attribute
         glEnableVertexAttribArray(0);
 
         // Specify how the Vertex Data is stored
-        glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(4 * sizeof(float)));
+        //glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(4 * sizeof(float)));
         // Enable the Vertex Attribute
-        glEnableVertexAttribArray(1);
+        //glEnableVertexAttribArray(1);
 
         registerUniformMat4(makeScaleMatrix(window.models[i].scale), "modelScaleMatrix", window.shader);
         registerUniformMat4(makeRotationMatrix(window.models[i].rotation), "modelRotationMatrix", window.shader);
