@@ -11,23 +11,26 @@ static float verticies[] = {
     -1.000000, 1.000000, -1.000000
 };
 
+static int vCount = 24;
+
 static int indicies[] = {
-    2, 3, 4,
-    8, 7, 6,
+    1, 2, 3,
+    7, 6, 5,
+    4, 5, 1,
     5, 6, 2,
-    6, 7, 3,
-    3, 7, 8,
-    1, 4, 6,
-    1, 2, 4,
-    5, 8, 6,
+    2, 6, 7,
+    0, 3, 5,
+    0, 1, 3,
+    4, 7, 5,
+    0, 4, 1,
     1, 5, 2,
-    2, 6, 3,
-    4, 3, 8,
-    5, 1, 8
+    3, 2, 7,
+    4, 0, 7
 };
 
-void update(){
+static int iCount = 36;
 
+void update(){
     // Called every frame
     // Gets events, clears the screen, and swaps buffers
 
@@ -39,6 +42,11 @@ void update(){
     glClear(GL_COLOR_BUFFER_BIT);
 
     handleInput();
+
+    float *wverticies = verticies;
+    int *windicies = indicies;
+
+    bufferData(wverticies, sizeof(float) * vCount, windicies, sizeof(int) * iCount);
 
     //printStats();
 
