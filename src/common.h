@@ -30,7 +30,6 @@
 
 #include "gfx/shader.h"
 #include "gfx/window.h"
-#include "gfx/vao.h"
 #include "gfx/camera.h"
 #include "gfx/uniforms.h"
 #include "gfx/model.h"
