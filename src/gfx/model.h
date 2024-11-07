@@ -1,14 +1,20 @@
 #ifndef MODEL_H
 #define MODEL_H
 
+#include "common.h"
+
 struct modelStruct{
     int vCount;
-    float v[24];
+    float *v;
 
     int iCount;
-    int i[36];
+    int *i;
+
+    vec4 position;
+    vec4 rotation;
+    vec4 scale;
 };
 
-struct modelStruct loadModel(char *path);
+//struct modelStruct loadModel(char *path);
 
 #endif

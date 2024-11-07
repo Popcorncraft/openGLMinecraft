@@ -41,6 +41,9 @@ struct windowStruct{
     bool cursorLocked;
     float cursorx;
     float cursory;
+
+    int objectCount;
+    struct modelStruct *objects;
 };
 #pragma endregion
 
