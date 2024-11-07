@@ -38,7 +38,6 @@
 #include "system/render.h"
 #include "system/close.h"
 #include "system/input.h"
-#include "system/debug.h"
 #include "system/error.h"
 
 extern struct windowStruct window;
