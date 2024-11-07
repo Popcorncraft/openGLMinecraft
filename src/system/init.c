@@ -1,31 +1,5 @@
 #include "common.h"
 
-static float verticies[] = {
-    1.000000, -1.000000, -1.000000,
-    1.000000, -1.000000, 1.000000,
-    -1.000000, -1.000000, 1.000000,
-    -1.000000, -1.000000, -1.000000,
-    1.000000, 1.000000, -1.000000,
-    1.000000, 1.000000, 1.000000,
-    -1.000000, 1.000000, 1.000000,
-    -1.000000, 1.000000, -1.000000
-};
-
-static int indicies[] = {
-    2, 3, 4,
-    8, 7, 6,
-    5, 6, 2,
-    6, 7, 3,
-    3, 7, 8,
-    1, 4, 6,
-    1, 2, 4,
-    5, 8, 6,
-    1, 5, 2,
-    2, 6, 3,
-    4, 3, 8,
-    5, 1, 8
-};
-
 void init(){
 
     // Called at program creation
@@ -70,13 +44,13 @@ void init(){
     window.cameraPosition = (vec4){0, 0, 0, 0};
     window.cameraRotation = (vec4){0, 0, 0, 0};
 
-    setupBuffers();
+    // Set the VAO id as a VAO
+    glGenVertexArrays(1, &window.vao);
 
-    for (int i = 0; i < SIZE_OF_ARRAY(indicies); i++){
-        indicies[i]--;
-    }
-
-    bufferData(verticies, sizeof(verticies), indicies, sizeof(indicies));
+    // Set the VBO id as a VBO
+    glGenBuffers(1, &window.vbo);
+    // Set the EBO id as an EBO
+    glGenBuffers(1, &window.ebo);
 
     window.shader = createShaderProgram("shaders/vertex.vs", "shaders/fragment.fs");
 

@@ -1,6 +1,8 @@
 #version 450 core
 
 in vec3 in_Position;
+in vec3 in_Normal;
+in vec3 in_Color;
 
 uniform mat4 modelScaleMatrix;
 uniform mat4 modelRotationMatrix;

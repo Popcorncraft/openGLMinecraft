@@ -56,7 +56,24 @@ void update(){
     lastTime = time;
 
     for (int i = 0; i < SIZE_OF_ARRAY(modelList); i++){
-        bufferData(modelList[i].v, modelList[i].vCount * sizeof(float), modelList[i].i, modelList[i].iCount * sizeof(int));
+        // INSTRUCTIONS: bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attribute(s).
+        // Make VAO the current Vertex Array
+        glBindVertexArray(window.vao);
+
+        // Make VBO current Vertex Buffer
+        glBindBuffer(GL_ARRAY_BUFFER, window.vbo);
+        // Add the verticies array to the Vertex Buffer
+        glBufferData(GL_ARRAY_BUFFER, modelList[i].vCount * sizeof(float), modelList[i].v, GL_STATIC_DRAW);
+
+        // Make EBO current Element Buffer
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, window.ebo);
+        // Add the indicies to the Element Buffer
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, modelList[i].iCount * sizeof(int), modelList[i].i, GL_STATIC_DRAW);
+
+        // Specify how the Vertex Data is stored
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+        // Enable the Vertex Attribute
+        glEnableVertexAttribArray(0);
 
         registerUniformMat4(makeScaleMatrix(modelList[i].scale), "modelScaleMatrix", window.shader);
         registerUniformMat4(makeRotationMatrix(modelList[i].rotation), "modelRotationMatrix", window.shader);
