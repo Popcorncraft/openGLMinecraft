@@ -17,7 +17,6 @@
 
 #include "openGL/gl.h"
 #include "openGL/glfw.h"
-#include "openGL/glad.h"
 #include "openGL/callbacks.h"
 
 #include "math/mat4.h"
