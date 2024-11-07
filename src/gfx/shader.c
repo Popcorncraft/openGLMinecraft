@@ -15,6 +15,9 @@ unsigned int compileShader(char *path, enum shaderType type){
         case FRAGMENT:
             subShader = glCreateShader(GL_FRAGMENT_SHADER);
             break;
+        case GEOMETRY:
+            subShader = glCreateShader(GL_GEOMETRY_SHADER);
+            break;
         default:
             printf("NOT VALID SHADER TYPE");
             break;
@@ -41,6 +44,9 @@ unsigned int compileShader(char *path, enum shaderType type){
             case FRAGMENT:
                 printf("ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n%s\n", infoLog);
                 break;
+            case GEOMETRY:
+                printf("ERROR::SHADER::GEOMETRY::COMPILATION_FAILED\n%s\n", infoLog);
+                break;
         }
     }
     else{
@@ -51,23 +57,29 @@ unsigned int compileShader(char *path, enum shaderType type){
             case FRAGMENT:
                 printf("Fragment Shader Compiled\n");
                 break;
+            case GEOMETRY:
+                printf("Geometry Shader Compiled\n");
+                break;
         }
     }
     return subShader;
 }
 
-unsigned int createShaderProgram(char *vertexPath, char *fragmentPath){
+unsigned int createShaderProgram(char *vertexPath, char *fragmentPath, char *geometryPath){
 
     unsigned int vertexShader = compileShader(vertexPath, VERTEX);
     unsigned int fragmentShader = compileShader(fragmentPath, FRAGMENT);
+    unsigned int geometryShader = compileShader(geometryPath, GEOMETRY);
     
     unsigned int shaderProgram = glCreateProgram();
 
     glAttachShader(shaderProgram, vertexShader);
     glAttachShader(shaderProgram, fragmentShader);
+    glAttachShader(shaderProgram, geometryShader);
 
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
+    glDeleteShader(geometryShader);
 
     return(shaderProgram);
 }

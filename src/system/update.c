@@ -86,6 +86,8 @@ void update(){
         // Enable the Vertex Attribute
         //glEnableVertexAttribArray(1);
 
+        glUseProgram(window.shader);
+
         registerUniformMat4(makeScaleMatrix(window.models[i].scale), "modelScaleMatrix", window.shader);
         registerUniformMat4(makeRotationMatrix(window.models[i].rotation), "modelRotationMatrix", window.shader);
         registerUniformMat4(makeTranslationMatrix(window.models[i].position), "modelTranslationMatrix", window.shader);
@@ -94,8 +96,6 @@ void update(){
         registerUniformMat4(makeTranslationMatrix((vec4){-window.cameraPosition.x, -window.cameraPosition.y, -window.cameraPosition.z, window.cameraPosition.w}), "cameraTranslationMatrix", window.shader);
         
         registerUniformMat4(makeProjectionMatrix(90, 0.1, 1000), "projectionMatrix", window.shader);
-
-        glUseProgram(window.shader);
 
         //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -108,4 +108,5 @@ void update(){
 
     // Swap buffers
     glfwSwapBuffers(window.handle);
+    //glfwSetWindowShouldClose(window.handle, 1);
 }

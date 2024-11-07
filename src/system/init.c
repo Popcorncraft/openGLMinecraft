@@ -54,12 +54,21 @@ void init(){
     // Set the EBO id as an EBO
     glGenBuffers(1, &window.ebo);
 
-    window.shader = createShaderProgram("shaders/vertex.vs", "shaders/fragment.fs");
+    window.shader = createShaderProgram("shaders/vertex.vs", "shaders/fragment.fs", "shaders/geometry.gs");
 
     // Configure shader variables
     glBindAttribLocation(window.shader, 0, "in_Position");
     // Link shader
     glLinkProgram(window.shader);
+
+    int success = 0;
+    char infoLog[512];
+    glGetProgramiv(window.shader, GL_LINK_STATUS, &success);
+    if (success != GL_TRUE){
+        printf("LINKING::ERROR\n");
+        glGetProgramInfoLog(window.shader, 512, NULL, infoLog);
+        printf("%s\n\n\n\n\n\n", infoLog);
+    }
 
     window.models = (struct modelStruct*)malloc(sizeof(struct modelStruct));
 
