@@ -23,8 +23,6 @@ static void _init(){
     // Set window as the current openGL context
     glfwMakeContextCurrent(window.handle);
 
-    enableOpenGLErrorReporting();
-
     // Set the callback functions
     registerCallbacks();
 
@@ -33,6 +31,8 @@ static void _init(){
 
     // Initalize GLAD
     initGLAD();
+
+    enableOpenGLErrorReporting();
 }
 
 static void _update(){
