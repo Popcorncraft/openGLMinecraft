@@ -27,6 +27,38 @@ static int indicies[] = {
 };
 
 void init(){
+
+    // Called at program creation
+    // Sets up GLFW, GLAD, and the window
+
+    // Initalize GLFW and the window
+    initGLFW();
+
+    // Set inital window size
+    window.size.width = 1280;
+    window.size.height = 720;
+
+    // Create window
+    window.handle = glfwCreateWindow(window.size.width, window.size.height, "test", NULL, NULL);
+    // Ensure window was created
+    if (!window.handle){
+        fprintf(stderr, "ERROR::GLFW::FAILED_WINDOW_CREATION\n%s\n", strerror(errno));
+    }
+
+    // Set window as the current openGL context
+    glfwMakeContextCurrent(window.handle);
+
+    // Set the callback functions
+    registerCallbacks();
+
+    // Log Creation
+    printf("GLFW Window Initalized\n");
+
+    // Initalize GLAD
+    initGLAD();
+
+    enableOpenGLErrorReporting();
+
     for (int i = 0; i < MAX_KEYBOARD_KEY_NUM; i++){
         window.keyboard[i] = 0;
     }

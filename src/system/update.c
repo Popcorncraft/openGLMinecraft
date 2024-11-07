@@ -27,6 +27,17 @@ static int indicies[] = {
 };
 
 void update(){
+
+    // Called every frame
+    // Gets events, clears the screen, and swaps buffers
+
+    // Get events
+    glfwPollEvents();
+
+    // Clear the window
+    glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+
     handleInput();
 
     //printStats();
@@ -57,4 +68,7 @@ void update(){
 
     // Draw the elements
     glDrawElements(GL_TRIANGLES, SIZE_OF_ARRAY(indicies), GL_UNSIGNED_INT, 0);
+
+    // Swap buffers
+    glfwSwapBuffers(window.handle);
 }

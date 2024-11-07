@@ -1,7 +1,9 @@
 #include "common.h"
 
 int main(){
-    setWindowFunctions(init, update, close);
-    windowInit();
-    windowLoop();
+    init();
+    while(!glfwWindowShouldClose(window.handle)){
+        update();
+    }
+    closeProgram();
 }
