@@ -1,52 +1,11 @@
 #include "common.h"
 
-static float verticies[] = {
-     1.000000, -1.000000, -1.000000, 1.000000,          1.000000, 1.000000, 1.000000, 1.000000,
-     1.000000, -1.000000,  1.000000, 1.000000,          1.000000, 1.000000, 1.000000, 1.000000,
-    -1.000000, -1.000000,  1.000000, 1.000000,          1.000000, 1.000000, 1.000000, 1.000000,
-    -1.000000, -1.000000, -1.000000, 1.000000,          1.000000, 1.000000, 1.000000, 1.000000,
-     1.000000,  1.000000, -1.000000, 1.000000,          1.000000, 1.000000, 1.000000, 1.000000,
-     1.000000,  1.000000,  1.000000, 1.000000,          1.000000, 1.000000, 1.000000, 1.000000,
-    -1.000000,  1.000000,  1.000000, 1.000000,          1.000000, 1.000000, 1.000000, 1.000000,
-    -1.000000,  1.000000, -1.000000, 1.000000,          1.000000, 1.000000, 1.000000, 1.000000
-};
-
-static vec4 normals[] = {
-     0.000000, -1.000000,  0.000000, 1.000000,
-     0.000000,  1.000000,  0.000000, 1.000000,
-     1.000000,  0.000000,  0.000000, 1.000000,
-    -0.000000,  0.000000,  1.000000, 1.000000,
-    -1.000000, -0.000000, -0.000000, 1.000000,
-     0.000000,  0.000000, -1.000000, 1.000000
-};
-
-static int indicies[] = {
-    1, 2, 3,
-    7, 6, 5,
-    4, 5, 1,
-    5, 6, 2,
-    2, 6, 7,
-    0, 3, 7,
-    0, 1, 3,
-    4, 7, 5,
-    0, 4, 1,
-    1, 5, 2,
-    3, 2, 7,
-    4, 0, 7
-};
-
-struct modelStruct cube1 = {SIZE_OF_ARRAY(verticies), verticies, SIZE_OF_ARRAY(indicies), indicies, (vec4){-1.5, 0, 3, 0}, (vec4){0, 0, 0, 0}, (vec4){1, 1, 1, 1}};
-struct modelStruct cube2 = {SIZE_OF_ARRAY(verticies), verticies, SIZE_OF_ARRAY(indicies), indicies, (vec4){1.5, 0, 3, 0}, (vec4){0, 0, 0, 0}, (vec4){1, 1, 1, 1}};
-
-double lastTime = 0;
-
+struct timespec lastTime;
 
 void update(){
     // Called every frame
     // Gets events, clears the screen, and swaps buffers
     glEnable(GL_DEPTH_TEST);
-
-    struct modelStruct modelList[] = {cube1, cube2};
 
     // Get events
     glfwPollEvents();
@@ -56,10 +15,6 @@ void update(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     handleInput();
-
-    double time = (double)clock() / CLOCKS_PER_SEC;
-    double deltaTime = time - lastTime;
-    lastTime = time;
 
     for (int i = 0; i < window.modelCount; i++){
         // INSTRUCTIONS: bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attribute(s).

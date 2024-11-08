@@ -68,9 +68,10 @@ void init(){
         printf("LINKING::ERROR\n");
         glGetProgramInfoLog(window.shader, 512, NULL, infoLog);
         printf("%s\n\n\n\n\n\n", infoLog);
+        glfwSetWindowShouldClose(window.handle, 1);
     }
 
     window.models = (struct modelStruct*)malloc(sizeof(struct modelStruct));
 
-    registerModel("./models/teapot.obj", (vec4){0, 0, 3, 0}, (vec4){0, 0, 0, 0}, (vec4){1, 1, 1, 1});
+    registerModel("./models/teapot.obj", (vec4){0, -1.5, 3, 0}, (vec4){0, 0, 0, 0}, (vec4){1, 1, 1, 1});
 }

@@ -1,12 +1,15 @@
 #ifndef COMMON_H
 #define COMMON_H
 
+#define _POSIX_C_SOURCE 200809L
+
 #define PI 3.14159265
 #define MAX_KEYBOARD_KEY_NUM 348
 #define MAX_MOUSE_BUTTON_NUM 7
 
 #define SIZE_OF_ARRAY(a) (sizeof(a) / sizeof(a[0]))
 
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -24,6 +27,7 @@
 #include "math/object.h"
 #include "math/projectionMatrix.h"
 #include "math/modelMatrix.h"
+#include "math/timeUtils.h"
 
 #include "file/fileToBuf.h"
 

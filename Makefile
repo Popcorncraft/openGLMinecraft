@@ -18,7 +18,7 @@ clean:
 	@rm -rf bin/*
 
 $(TARGET): $(OBJ)
-	@gcc -g -o $@ $^ -Isrc -l:libglfw3.a -lm
+	@gcc -g -o $@ $^ -Isrc -l:libglfw3.a -lm -lrt
 
 obj/%.o: src/%.c
 	@mkdir -p $(@D)

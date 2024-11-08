@@ -3,7 +3,6 @@
 
 #include "common.h"
 
-#pragma region Window Type
 typedef void (*windowFunction)();
 typedef void (*windowCallback)();
 
@@ -40,15 +39,20 @@ struct windowStruct{
 
     int modelCount;
     struct modelStruct *models;
-};
-#pragma endregion
 
-#pragma region Functions
+    double time;
+    double startTime;
+    double lastTime;
+    double deltaTime;
+    double upTime;
+    
+    double fpsCalc[10000];
+    double fpsAverage;
+
+};
 
 void setWindowFunctions(windowFunction init, windowFunction update, windowFunction close);
 void windowInit();
 void windowLoop();
-
-#pragma endregion
 
 #endif

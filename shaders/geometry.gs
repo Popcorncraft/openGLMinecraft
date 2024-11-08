@@ -3,14 +3,21 @@
 layout (triangles) in;
 layout (triangle_strip, max_vertices = 3) out;
 
-in vec4 vertexColor[];
+in vec4 worldPos[];
+
 out vec4 vertexColour;
 
 void main(){
-    vertexColour = gl_in[0].gl_Position;
-    for(int i = 0; i < 3; i++){
-        gl_Position = gl_in[i].gl_Position;
-        EmitVertex();
+    vec3 worldNormal = normalize(cross(normalize(worldPos[1].xyz - worldPos[0].xyz), normalize(worldPos[2].xyz - worldPos[0].xyz)));
+    float grayscale = (dot(worldNormal, vec3(0, 1, 0)) + 1) / 2;
+    vertexColour = vec4(grayscale, grayscale, grayscale, 1);
+
+    vec3 normal = normalize(cross(normalize(gl_in[1].gl_Position.xyz - gl_in[0].gl_Position.xyz), normalize(gl_in[2].gl_Position.xyz - gl_in[0].gl_Position.xyz)));
+    if (dot(normal, vec3(0, 0, 1)) < 0){
+        for(int i = 0; i < 3; i++){
+            gl_Position = gl_in[i].gl_Position;
+            EmitVertex();
+        }
     }
     EndPrimitive();
 }
