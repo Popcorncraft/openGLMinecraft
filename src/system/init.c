@@ -45,6 +45,7 @@ void init(){
 
     window.cameraPosition = (vec4){0, 0, 0, 0};
     window.cameraRotation = (vec4){0, 0, 0, 0};
+    window.cameraFront = (vec4){0, 0, 1, 0};
 
     // Set the VAO id as a VAO
     glGenVertexArrays(1, &window.vao);
@@ -73,5 +74,5 @@ void init(){
 
     window.models = (struct modelStruct*)malloc(sizeof(struct modelStruct));
 
-    registerModel("./models/teapot.obj", (vec4){0, -1.5, 3, 0}, (vec4){0, 0, 0, 0}, (vec4){1, 1, 1, 1});
+    registerModel("./models/axis.obj", (vec4){0, -1.5, 3, 0}, (vec4){0, 0, 0, 0}, (vec4){1, 1, 1, 1});
 }

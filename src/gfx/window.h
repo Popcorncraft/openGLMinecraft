@@ -28,8 +28,11 @@ struct windowStruct{
     unsigned int vbo;
     unsigned int ebo;
 
-    vec4 cameraRotation;
     vec4 cameraPosition;
+    vec4 cameraRotation;
+    vec4 cameraFront;
+    vec4 cameraUp;
+    vec4 cameraRight;
 
     bool keyboard[MAX_KEYBOARD_KEY_NUM];
     bool mouse[MAX_MOUSE_BUTTON_NUM];
@@ -46,7 +49,7 @@ struct windowStruct{
     double deltaTime;
     double upTime;
     
-    double fpsCalc[10000];
+    double fpsCalc[1000];
     double fpsAverage;
 
 };

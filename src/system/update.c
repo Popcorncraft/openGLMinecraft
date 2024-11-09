@@ -16,6 +16,11 @@ void update(){
 
     handleInput();
 
+    window.cameraFront = multVecMat((vec4){0, 0, 1, 1}, makeRotationMatrix(window.cameraRotation));
+
+    window.cameraUp = (vec4){0, 1, 0, 1};
+    window.cameraRight = crossProduct(window.cameraFront, window.cameraUp);
+
     for (int i = 0; i < window.modelCount; i++){
         // INSTRUCTIONS: bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attribute(s).
         // Make VAO the current Vertex Array

@@ -11,24 +11,26 @@ void toggleKey(int key){
 
 void handleInput(){
 
+    float speed = 0.005;
+
     // Movement
     if (window.keyboard[GLFW_KEY_SPACE] == 1){
-        window.cameraPosition.y += 0.005;
+        window.cameraPosition = addVec(window.cameraPosition, scaleVec(window.cameraUp, speed));
     }
     if (window.keyboard[GLFW_KEY_LEFT_SHIFT] == 1){
-        window.cameraPosition.y -= 0.005;
+       window.cameraPosition = addVec(window.cameraPosition, scaleVec(window.cameraUp, -speed));
     }
     if (window.keyboard[GLFW_KEY_A] == 1){
-        window.cameraPosition.x -= 0.005;
+        window.cameraPosition = addVec(window.cameraPosition, scaleVec(window.cameraRight, speed));
     }
     if (window.keyboard[GLFW_KEY_D] == 1){
-        window.cameraPosition.x += 0.005;
+        window.cameraPosition = addVec(window.cameraPosition, scaleVec(window.cameraRight, -speed));
     }
     if (window.keyboard[GLFW_KEY_W] == 1){
-        window.cameraPosition.z += 0.005;
+        window.cameraPosition = addVec(window.cameraPosition, scaleVec(window.cameraFront, speed));
     }
     if (window.keyboard[GLFW_KEY_S] == 1){
-        window.cameraPosition.z -= 0.005;
+        window.cameraPosition = addVec(window.cameraPosition, scaleVec(window.cameraFront, -speed));
     }
 
     // Mouse
