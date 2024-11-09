@@ -74,5 +74,5 @@ void init(){
 
     window.models = (struct modelStruct*)malloc(sizeof(struct modelStruct));
 
-    registerModel("./models/axis.obj", (vec4){0, -1.5, 3, 0}, (vec4){0, 0, 0, 0}, (vec4){1, 1, 1, 1});
+    registerModel("./models/cube.obj", (vec4){0, 0, 3, 0}, (vec4){0, 0, 0, 0}, (vec4){1, 1, 1, 1});
 }

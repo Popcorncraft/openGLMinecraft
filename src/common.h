@@ -24,8 +24,6 @@
 
 #include "math/mat4.h"
 #include "math/vec4.h"
-#include "math/object.h"
-#include "math/projectionMatrix.h"
 #include "math/modelMatrix.h"
 #include "math/timeUtils.h"
 

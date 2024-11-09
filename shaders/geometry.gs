@@ -14,9 +14,11 @@ void main(){
 
     vec3 normal = normalize(cross(normalize(gl_in[1].gl_Position.xyz - gl_in[0].gl_Position.xyz), normalize(gl_in[2].gl_Position.xyz - gl_in[0].gl_Position.xyz)));
     if (dot(normal, vec3(0, 0, 1)) < 0){
-        for(int i = 0; i < 3; i++){
-            gl_Position = gl_in[i].gl_Position;
-            EmitVertex();
+        if (gl_in[0].gl_Position.z > 0 || gl_in[0].gl_Position.z > 0 || gl_in[0].gl_Position.z > 0){
+            for(int i = 0; i < 3; i++){
+                gl_Position = gl_in[i].gl_Position;
+                EmitVertex();
+            }
         }
     }
     EndPrimitive();
