@@ -8,7 +8,7 @@ int main(){
 
     init();
 
-    while(!glfwWindowShouldClose(window.handle)){
+    while(glfwWindowShouldClose(window.handle)){
         char title[50];
         clock_gettime(CLOCK_MONOTONIC, &time);
         window.time = convertTime(time);
