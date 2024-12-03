@@ -8,7 +8,7 @@ OBJ = $(patsubst src/%.c, obj/%.o, $(SRC))
 default: clean build run
 
 run:
-	@./$(TARGET)
+	./$(TARGET)
 
 build: $(TARGET)
 
