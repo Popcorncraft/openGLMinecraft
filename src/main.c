@@ -1,6 +1,8 @@
 #include <glad/gl.h>
 #include <GLFW/glfw3.h>
 
+#include <cglm/cglm.h>
+
 #include <stdio.h>
 
 unsigned int SCR_WIDTH = 800;
@@ -11,6 +13,17 @@ void error_callback(int error, const char* description)
     fprintf(stderr, "Error: %s\n", description);
 }
 
+static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, GLFW_TRUE);
+}
+
+static void framebuffer_callback(GLFWwindow* window, int width, int height){
+    SCR_HEIGHT = height;
+    SCR_WIDTH = width;
+    glViewport(0, 0, width, height);
+}
 
 int main(){
     glfwSetErrorCallback(error_callback);
@@ -35,5 +48,17 @@ int main(){
         return -1;
     }
 
+    glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT);
+
+    while (!glfwWindowShouldClose(window)){
+        double time = glfwGetTime();
+        glfwPollEvents();
+
+
+        glfwSwapBuffers(window);
+    }
+
+    glfwDestroyWindow(window);
+    glfwTerminate();
     return 0;
 }
