@@ -46,7 +46,7 @@ char* fileToBuff(char *file){
 
 unsigned int compileShader(char *path, enum shaderType type){
     // Turn shader source file into buffer
-    char *shaderSource = filetobuf(path);
+    char *shaderSource = fileToBuff(path);
     // Create subShader ID
     unsigned int subShader = 0;
     // Set ID to relevant type

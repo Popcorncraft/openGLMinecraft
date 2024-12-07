@@ -52,6 +52,8 @@ int main(){
 
     glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT);
 
+    unsigned int shader3D = glCreateProgram();
+
     while (!glfwWindowShouldClose(window)){
         double time = glfwGetTime();
         glfwPollEvents();
