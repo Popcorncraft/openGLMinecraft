@@ -53,6 +53,8 @@ int main(){
     glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT);
 
     unsigned int shader3D = glCreateProgram();
+    addShader(shader3D, "./shaders/vertex3D.vert", VERTEX);
+    addShader(shader3D, "./shaders/fragment3D.frag", FRAGMENT);
 
     while (!glfwWindowShouldClose(window)){
         double time = glfwGetTime();
